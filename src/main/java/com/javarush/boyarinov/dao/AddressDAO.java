@@ -1,10 +1,10 @@
 package com.javarush.boyarinov.dao;
 
-import org.hibernate.Session;
+import com.javarush.boyarinov.config.SessionCreator;
 
-public class AddressDAO extends AbstractDAO<AddressDAO>{
+public class AddressDAO extends AbstractDAO<AddressDAO> {
 
-    public AddressDAO(Session session) {
-        super(session, AddressDAO.class);
+    public AddressDAO(SessionCreator sessionCreator) {
+        super(sessionCreator, AddressDAO.class);
     }
 }

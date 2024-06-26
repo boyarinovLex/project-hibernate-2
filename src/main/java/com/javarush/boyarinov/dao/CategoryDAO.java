@@ -1,11 +1,11 @@
 package com.javarush.boyarinov.dao;
 
+import com.javarush.boyarinov.config.SessionCreator;
 import com.javarush.boyarinov.entity.Category;
-import org.hibernate.Session;
 
 public class CategoryDAO extends AbstractDAO<Category> {
 
-    public CategoryDAO(Session session) {
-        super(session, Category.class);
+    public CategoryDAO(SessionCreator sessionCreator) {
+        super(sessionCreator, Category.class);
     }
 }
