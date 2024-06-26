@@ -29,9 +29,7 @@ public class Film {
 
     private String title;
 
-    @OneToOne
-    @JoinColumn(name = "film_id")
-    private FilmText description;
+    private String  description;
 
     @Column(name = "release_year")
     private Date releaseYear;

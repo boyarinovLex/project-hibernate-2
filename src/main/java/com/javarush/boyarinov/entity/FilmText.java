@@ -15,9 +15,12 @@ import lombok.Setter;
 public class FilmText {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
 
     private String title;
 
