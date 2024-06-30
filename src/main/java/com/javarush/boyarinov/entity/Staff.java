@@ -2,10 +2,7 @@ package com.javarush.boyarinov.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
@@ -14,8 +11,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table
+@Table(name = "staff")
 public class Staff {
 
     @Id
@@ -31,26 +29,33 @@ public class Staff {
 
     @ManyToOne
     @JoinColumn(name = "address_id")
+    @ToString.Exclude
     private Address address;
 
     @Lob
+    @ToString.Exclude
     private Byte[] picture;
 
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private Store store;
 
+    @Column(name = "active")
     private Boolean isActive;
 
+    @ToString.Exclude
     private String username;
 
+    @ToString.Exclude
     private String password;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
+    @ToString.Exclude
     private Timestamp lastUpdate;
 
 }

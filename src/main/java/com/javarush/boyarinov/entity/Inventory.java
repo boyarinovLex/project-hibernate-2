@@ -1,9 +1,6 @@
 package com.javarush.boyarinov.entity;
 
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,8 +10,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table
+@Table(name = "inventory")
 public class Inventory {
 
     @Id
@@ -24,15 +22,18 @@ public class Inventory {
 
     @ManyToOne
     @JoinColumn(name = "film_id")
+    @ToString.Exclude
     private Film film;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private Store store;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
+    @ToString.Exclude
     private Timestamp lastUpdate;
 
 }

@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "country")
 public class Country {
 
     @Id

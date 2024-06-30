@@ -11,8 +11,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table
+@Table(name = "rental")
 public class Rental {
 
     @Id
@@ -25,10 +26,12 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name = "inventory_id")
+    @ToString.Exclude
     private Inventory inventory;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @ToString.Exclude
     private Customer customer;
 
     @Column(name = "return_date")
@@ -36,11 +39,13 @@ public class Rental {
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
+    @ToString.Exclude
     private Staff staff;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
+    @ToString.Exclude
     private Timestamp lastUpdate;
 
 }

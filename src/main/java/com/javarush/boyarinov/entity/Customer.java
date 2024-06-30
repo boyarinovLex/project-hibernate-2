@@ -1,9 +1,6 @@
 package com.javarush.boyarinov.entity;
 
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,8 +12,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -26,6 +24,7 @@ public class Customer {
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private Store store;
 
     @Column(name = "first_name")
@@ -38,16 +37,20 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "address_id")
+    @ToString.Exclude
     private Address address;
 
+    @Column(name = "active")
     private Boolean isActive;
 
     @CreationTimestamp
     @Column(name = "create_date")
+    @ToString.Exclude
     private LocalDateTime createDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
+    @ToString.Exclude
     private Timestamp lastUpdate;
 }
