@@ -1,12 +1,15 @@
 package com.javarush.boyarinov.dao;
 
 import com.javarush.boyarinov.config.SessionCreator;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
 @AllArgsConstructor
+@Getter(value = AccessLevel.PROTECTED)
 public abstract class AbstractDAO<T> {
 
     private final SessionCreator sessionCreator;
@@ -25,7 +28,7 @@ public abstract class AbstractDAO<T> {
         return sessionCreator.getSession().createQuery("FROM " + aClass.getSimpleName(), aClass).list();
     }
 
-    public List<T> getItems(int limit, int offset) {
+    public List<T> getItems(int offset, int limit) {
         Query<T> query = sessionCreator.getSession().createQuery("FROM " + aClass.getSimpleName(), aClass);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
