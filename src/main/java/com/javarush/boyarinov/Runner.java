@@ -71,7 +71,7 @@ public class Runner {
                 Rental unreturnedFilm = appContainer.rentalDAO.getUnreturnedFilm();
                 unreturnedFilm.setReturnDate(LocalDateTime.now());
                 Film film = unreturnedFilm.getInventory().getFilm();
-                System.out.println("Покупатель пошел и вернул ранее арендованный фильм: \n" + film.getTitle());
+                System.out.printf("Покупатель пошел и вернул ранее арендованный фильм: %s\n\n", film.getTitle());
                 tx.commit();
             } catch (Exception e) {
                 tx.rollback();
